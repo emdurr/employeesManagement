@@ -10,6 +10,10 @@
     padding-right: 15px;
 }
 
+.t-row:hover {
+    background-color: #d7d5d5;
+}
+
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
