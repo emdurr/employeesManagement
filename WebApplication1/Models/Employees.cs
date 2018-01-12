@@ -9,6 +9,10 @@ namespace WebApplication1.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        [Required]
+        [Display(ResourceType = typeof(Resources.Data), Name = "FerretBirthDay")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'/'MM'/'yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Address { get; set; }
