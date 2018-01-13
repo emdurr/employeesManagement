@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebApplication1.Models.Employee>
+
+@{
+    ViewData["Title"] = "Filter";
+}
+
+<h2>Filter</h2>
+
+<p>
+    <a class="btn glyphicon glyphicon-arrow-left" asp-action="Index"></a>
+</p>
+<hr />
+<div>
+    @using (Html.BeginForm("Filter", "employees", FormMethod.Get))
+    {
+    <fieldset>
+        Filter by:
+        <div>
+            @Html.DropDownList("Status")
+            @Html.DropDownList("Department")
+            @Html.DropDownList("Shift")
+        </div>
+        <br />
+        <p><input type="submit" value="submit" /></p>
+    </fieldset>
+    }
+</div>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Department)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Shift)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Manager)
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr style="cursor: pointer;"
+            class="t-row"
+            id="@("row_"+ item.ID)"
+            onclick="window.location.href='@("http://localhost:49551/employees/Details/"+ item.ID)';">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shift)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manager)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

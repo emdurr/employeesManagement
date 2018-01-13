@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.ApplicationInsights.AspNetCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,10 +12,15 @@ namespace WebApplication1.Models
         public int ID { get; set; }
         public string Name { get; set; }
         [Required]
-        [Display(ResourceType = typeof(Resources.Data), Name = "FerretBirthDay")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd'/'MM'/'yyyy}")]
+        [Display(Name = "Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
+
         public DateTime StartDate { get; set; }
+        [Required]
+        [Display(Name = "Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         public string Address { get; set; }
         public string EmailAddress { get; set; }
