@@ -1,7 +1,111 @@
 ﻿@{
-    ViewData["Title"] = "Reports";
+    ViewBag.Title = "Employee Hire Statistics";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional reports.</p>
+@{
+    DayOfWeek weekStart = DayOfWeek.Monday; // or Sunday, or whenever
+    DateTime startingDate = DateTime.Today;
+
+    while (startingDate.DayOfWeek != weekStart)
+    { startingDate = startingDate.AddDays(-1); }
+
+    DateTime previousWeekStart = startingDate.AddDays(-7);
+    DateTime previousWeekEnd = startingDate.AddDays(-1);
+    DateTime previous1WeekStart = startingDate.AddDays(-14);
+    DateTime previous1WeekEnd = startingDate.AddDays(-8);
+    DateTime previous2WeekStart = startingDate.AddDays(-21);
+    DateTime previous2WeekEnd = startingDate.AddDays(-15);
+    DateTime previous3WeekStart = startingDate.AddDays(-28);
+    DateTime previous3WeekEnd = startingDate.AddDays(-22);
+}
+
+<h2>Employee Weekly Hire Statistics</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Week
+        </th>
+        <th>
+            Employees Hired
+        </th>
+    </tr>
+
+    <tr class="t-row">
+        <td>
+            @previousWeekStart.ToShortDateString() - @previousWeekEnd.ToShortDateString()
+        </td>
+        <td>
+            @ViewData["EmployeeCount"]
+        </td>
+    </tr>
+
+    <tr class="t-row">
+        <td>
+            @previous1WeekStart.ToShortDateString() - @previous1WeekEnd.ToShortDateString()
+        </td>
+        <td>
+            @ViewData["Employee1Count"]
+        </td>
+    </tr>
+
+    <tr class="t-row">
+        <td>
+            @previous2WeekStart.ToShortDateString() - @previous2WeekEnd.ToShortDateString()
+        </td>
+        <td>
+            @ViewData["Employee2Count"]
+        </td>
+    </tr>
+
+    <tr class="t-row">
+        <td>
+            @previous3WeekStart.ToShortDateString() - @previous3WeekEnd.ToShortDateString()
+        </td>
+        <td>
+            @ViewData["Employee3Count"]
+        </td>
+    </tr>
+</table>
+
+<h2>Employee Yearly Termination Statistics</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Year
+        </th>
+        <th>
+            Employees Terminated
+        </th>
+    </tr>
+    <tr class="t-row">
+        <td>
+            @ViewData["Year"]
+        </td>
+        <td>
+            @ViewData["TermEmployeeCount"]
+        </td>
+    </tr>
+</table>
+
+<h2>Employee Permissions Statistics</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Permission
+        </th>
+        <th>
+            Employees Per Permission
+        </th>
+    </tr>
+    <tr class="t-row">
+        <td>
+            @ViewData["Year"]
+        </td>
+        <td>
+            @ViewData["TermEmployeeCount"]
+        </td>
+    </tr>
+</table>
