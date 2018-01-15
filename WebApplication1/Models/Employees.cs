@@ -57,5 +57,7 @@ namespace WebApplication1.Models
                 return this.EndDate.ToString("d");
             }
         }
+
+        public virtual Permissions Permissions { get; set; }
     }
 }
