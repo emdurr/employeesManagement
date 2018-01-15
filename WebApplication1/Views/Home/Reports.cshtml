@@ -3,7 +3,7 @@
 }
 
 @{
-    DayOfWeek weekStart = DayOfWeek.Monday; // or Sunday, or whenever
+    DayOfWeek weekStart = DayOfWeek.Monday;
     DateTime startingDate = DateTime.Today;
 
     while (startingDate.DayOfWeek != weekStart)
@@ -100,12 +100,18 @@
             Employees Per Permission
         </th>
     </tr>
-    <tr class="t-row">
-        <td>
-            @ViewData["Year"]
-        </td>
-        <td>
-            @ViewData["TermEmployeeCount"]
-        </td>
-    </tr>
+    @foreach (var item in Html.GetEnumSelectList<WebApplication1.Models.Type>())
+    {
+
+
+
+        <tr class="t-row">
+            <td>
+                @item.Text
+            </td>
+            <td>
+                @ViewData[item.Text]
+            </td>
+        </tr>
+    }
 </table>

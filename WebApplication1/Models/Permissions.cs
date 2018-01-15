@@ -14,6 +14,7 @@ namespace WebApplication1.Models
         [Key]
         [ForeignKey("Employee")]
         public int EmployeeID { get; set; }
+        [Required]
         public Type? Type { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

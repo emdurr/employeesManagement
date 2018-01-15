@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using WebApplication1.Models;
 using WebApplication1.ViewModels;
 
@@ -48,6 +49,12 @@ namespace WebApplication1.Controllers
             ViewData["Employee1Count"] = previous1WeekEmp.Count();
             ViewData["Employee2Count"] = previous2WeekEmp.Count();
             ViewData["Employee3Count"] = previous3WeekEmp.Count();
+            ViewData["Manager"] = _context.Permissions.Where(x => x.Type == Models.Type.Manager).Count();
+            ViewData["TeamLead"] = _context.Permissions.Where(x => x.Type == Models.Type.TeamLead).Count();
+            ViewData["Director"] = _context.Permissions.Where(x => x.Type == Models.Type.Director).Count();
+            ViewData["HR"] = _context.Permissions.Where(x => x.Type == Models.Type.HR).Count();
+            ViewData["EmailAccess"] = _context.Permissions.Where(x => x.Type == Models.Type.EmailAccess).Count();
+            ViewData["Key"] = _context.Permissions.Where(x => x.Type == Models.Type.Key).Count();
             return View();
         }
 

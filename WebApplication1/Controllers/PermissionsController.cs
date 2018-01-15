@@ -47,7 +47,8 @@ namespace WebApplication1.Controllers
         // GET: Permissions/Create
         public IActionResult Create()
         {
-            ViewData["EmployeeID"] = new SelectList(_context.Employee, "ID", "FirstMidName");
+            ViewData["EmployeeID"] = new SelectList(_context.Employee, "ID", "FullName");
+            ViewData["Permissions"] = new SelectList(_context.Permissions, "Type");
             return View();
         }
 
