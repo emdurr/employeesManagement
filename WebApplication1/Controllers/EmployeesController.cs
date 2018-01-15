@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> Index(string sortOrder, string search)
         {
             if (search != null && sortOrder == null)
-                return View(await _context.Employee.Where(x => x.Name.StartsWith(search)).ToListAsync());
+                return View(await _context.Employee.Where(x => x.LastName.StartsWith(search)).ToListAsync());
             else
                 ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
                 ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
@@ -32,7 +32,7 @@ namespace WebApplication1.Controllers
                 switch (sortOrder)
                 {
                     case "name_desc":
-                        employees = employees.OrderByDescending(e => e.Name);
+                        employees = employees.OrderByDescending(e => e.LastName);
                         break;
                     case "Date":
                         employees = employees.OrderBy(e => e.StartDate);
@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
                         employees = employees.OrderByDescending(e => e.EndDate);
                         break;
                     default:
-                        employees = employees.OrderBy(e => e.Name);
+                        employees = employees.OrderBy(e => e.LastName);
                         break;
                 }
                 return View(await employees.ToListAsync());

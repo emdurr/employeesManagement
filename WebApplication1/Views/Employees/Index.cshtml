@@ -56,7 +56,7 @@
                 id="@("row_"+ item.ID)"
                 onclick="window.location.href='@("http://localhost:49551/employees/Details/"+ item.ID)';">
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.FullName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ReturnStartDateForDisplay)

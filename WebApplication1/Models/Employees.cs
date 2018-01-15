@@ -10,18 +10,30 @@ namespace WebApplication1.Models
     public class Employee
     {
         public int ID { get; set; }
-        public string Name { get; set; }
         [Required]
+        [Display(Name = "Last Name"), StringLength(50, MinimumLength = 1)]
+        public string LastName { get; set; }
+
+        [Required]
+        [System.ComponentModel.DataAnnotations.Schema.Column("FirstName"), Display(Name = "First Name"), StringLength(50, MinimumLength = 1)]
+        public string FirstMidName { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName
+        {
+            get { return LastName + ", " + FirstMidName; }
+        }
+
         [Display(Name = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
-
         public DateTime StartDate { get; set; }
-        [Required]
+
         [Display(Name = "Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
+
         public string Address { get; set; }
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
